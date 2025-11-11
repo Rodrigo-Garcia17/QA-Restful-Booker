@@ -29,4 +29,4 @@ Todos os casos (CT01 a CT05) executados com sucesso.
 
 ## 👤 Autor
 Rodrigo Garcia da Silva  
-[LinkedIn](https://linkedin.com/in/rodrigo-garcia17) | [GitHub](https://github.com/Rodrigo-Garcia17)
+[LinkedIn](https://www.linkedin.com/in/rodrigo-garcia-da-silva/) | [GitHub](https://github.com/Rodrigo-Garcia17)
