@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "22a7aa0b-bd76-4e15-b8a6-1bb1a9038e67",
+		"name": "Restfull Booker - QA Manual",
+		"description": "Testes manuais realizados na API Restful Booker.\n\nInclui criação, consulta, atualização e exclusão de reservas.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48007006",
+		"_collection_link": "https://garciasolucoesemti-4174609.postman.co/workspace/QA-MC5~0f61489a-44f9-498a-9e46-893b3c29d749/collection/48007006-22a7aa0b-bd76-4e15-b8a6-1bb1a9038e67?action=share&source=collection_link&creator=48007006"
+	},
+	"item": [
+		{
+			"name": "CT01 - Criar Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"password123\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CT02 - Criar Reserva",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstname\": \"Rodrigo\",\r\n  \"lastname\": \"Garcia\",\r\n  \"totalprice\": 150,\r\n  \"depositpaid\": false,\r\n  \"bookingdates\": { \"checkin\": \"2025-10-01\", \"checkout\": \"2025-10-04\" },\r\n  \"additionalneeds\": \"Breakfast\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/booking",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CT03 - Consultar Reserva",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/booking/{{bookingId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"booking",
+						"{{bookingId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CT04 - Atualizar Reserva",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token=4255e5fbbf5d479",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstname\": \"RodrigoUpdated\",\r\n  \"lastname\": \"Garcia\",\r\n  \"totalprice\": 180,\r\n  \"depositpaid\": true,\r\n  \"bookingdates\": { \"checkin\": \"2025-10-02\", \"checkout\": \"2025-10-06\" },\r\n  \"additionalneeds\": \"Wi-Fi\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/booking/{{bookingId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"booking",
+						"{{bookingId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CT05 - Deletar Reserva",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token = {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/booking/{{bookingId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"booking",
+						"{{bookingId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
