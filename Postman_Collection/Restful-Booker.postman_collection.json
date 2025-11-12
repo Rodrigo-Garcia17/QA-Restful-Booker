@@ -15,7 +15,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"password123\"\n}\n",
+					"raw": "\n{\"username\":\"invalid\", \n\"password\":\"wrong\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -81,7 +81,7 @@
 		{
 			"name": "CT04 - Atualizar Reserva",
 			"request": {
-				"method": "PUT",
+				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -96,7 +96,101 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"firstname\": \"RodrigoUpdated\",\r\n  \"lastname\": \"Garcia\",\r\n  \"totalprice\": 180,\r\n  \"depositpaid\": true,\r\n  \"bookingdates\": { \"checkin\": \"2025-10-02\", \"checkout\": \"2025-10-06\" },\r\n  \"additionalneeds\": \"Wi-Fi\"\r\n}\r\n",
+					"raw": "{\r\n    \"username\":\"invalid\", \r\n    \"password\":\"wrong\"\r\n    \r\n}    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CT05 - Deletar Reserva",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token = {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/booking/{{bookingId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"booking",
+						"{{bookingId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CT06 - Criar reserva sem campos obrigatórios",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstname\": \"Rodrigo\",\r\n  \"lastname\": \"\",\r\n  \"totalprice\": \r\n  \"depositpaid\":,\r\n  \"bookingdates\": { \"checkin\": \"\", \"checkout\": \"\" },\r\n  \"additionalneeds\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/booking",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CT07 - Consultar reserva inexistente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/booking/99999",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"booking",
+						"99999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CT08 - Atualizar reserva sem autenticação",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstname\": \"SemToken\",\r\n  \"lastname\": \"Teste\",\r\n  \"totalprice\": 150,\r\n  \"depositpaid\": false,\r\n  \"bookingdates\": { \"checkin\": \"2025-10-01\", \"checkout\": \"2025-10-04\" },\r\n  \"additionalneeds\": \"Breakfast\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -117,16 +211,20 @@
 			"response": []
 		},
 		{
-			"name": "CT05 - Deletar Reserva",
+			"name": "CT09 - Excluir reserva com token inválido",
 			"request": {
 				"method": "DELETE",
 				"header": [
 					{
 						"key": "Cookie",
-						"value": "token = {{token}}",
+						"value": "token=12345abc (token inválido)",
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{baseUrl}}/booking/{{bookingId}}",
 					"host": [
