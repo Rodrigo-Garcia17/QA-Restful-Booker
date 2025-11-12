@@ -9,6 +9,7 @@ O foco é demonstrar o processo completo de planejamento, execução, registro d
 Postman → Execução dos testes manuais e validação de requisições/respostas
 
 Google Sheets → Documentação dos casos de teste e resultados
+https://docs.google.com/spreadsheets/d/1R7D1N7CvOUu_ZWgfGsp8OI1lcVG9oes-/edit?usp=drive_link&ouid=108860538402249057489&rtpof=true&sd=true
 
 Trello → Gestão e acompanhamento das tarefas e bugs
 
@@ -86,5 +87,5 @@ Resultado Obtido (antes da correção): 200 OK – Token inválido
 Rodrigo Garcia da Silva
 💼 Profissional de TI com experiência em manutenção e suporte técnico
 🎯 Em transição de carreira para Qualidade de Software (QA)
-📫 LinkedIn – Rodrigo Garcia
+📫 LinkedIn: https://www.linkedin.com/in/rodrigo-garcia-da-silva/
 
